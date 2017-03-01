@@ -1,0 +1,24 @@
+FROM debian:jessie
+MAINTAINER c00clupea
+
+
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    gcc \
+    g++ \
+    make \
+    gdb \
+    git \
+    bison \
+    flex \
+    g++ \
+    emacs \
+    sudo
+
+RUN adduser c00clupea-docker && \
+    echo "c00clupea-docker ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/c00clupea-docker && \
+    chmod 0440 /etc/sudoers.d/c00clupea-docker
+
+
+
+USER c00clupea-docker
